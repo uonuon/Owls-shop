@@ -37,7 +37,7 @@ export default function OwlsWelcome() {
         <div className="flex-image">
           <div className="try">
             <p className="package-title">جرب من هنا</p>
-            <img src={arrow} />
+            <img alt="" src={arrow} />
           </div>
           <div className="images-container">
             <img

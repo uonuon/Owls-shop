@@ -5,7 +5,7 @@ import { toast, ToastContainer } from "react-toastify";
 import { auth, db } from "../FirebaseConfig";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { ref, set } from "firebase/database";
-import logo from "../assets/logo.svg";
+import logo from "../assets/mobile.png";
 export default function Login() {
   const [data, setData] = useState({
     email: "",
@@ -59,7 +59,7 @@ export default function Login() {
           <img className="logo" alt="logo" src={logo} />
         </div>
         <div className="login-content">
-          <p className="title">اكونت جديد!</p>
+          <p className="title">سجّل وكمّل</p>
           <p className="sub-title">
             محتاج تعمل أكونت جديد عشان تقدر ترجع تستخدم أولز تاني وتجرّب أخر
             إضافات أولز والبروفايل الجديد!{" "}

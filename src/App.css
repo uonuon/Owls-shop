@@ -58,6 +58,25 @@ span {
   line-height: normal;
 }
 
+.sub-title-last {
+  color: #fff;
+  text-align: right;
+  font-family: Cairo;
+  font-size: 22px;
+  font-style: normal;
+  font-weight: 400;
+  width: 100%;
+  margin: 0;
+  margin: 20px 0;
+  line-height: normal;
+}
+
+.row {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+
 .sub-list {
   color: #fff;
   font-family: Cairo;
@@ -71,15 +90,28 @@ span {
 
 .login-container {
   border-radius: 24px;
-  width: 80%;
+  width: 75%;
   max-width: 1250px;
+  max-height: 80vh;
   border-radius: 14px;
   background: #3c3c3c;
-  box-shadow: 23px 30px 4px 13px rgba(0, 0, 0, 0.25);
   display: flex;
   padding: 112px;
   flex-direction: row;
   justify-content: space-between;
+}
+
+.text-area {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+textarea {
+  background: #5d5f5d;
+  width: 470px;
+  height: 188px;
+  margin-bottom: 15px;
 }
 
 .app-container {
@@ -89,7 +121,6 @@ span {
   max-width: 1250px;
   border-radius: 14px;
   background: #3c3c3c;
-  box-shadow: 23px 30px 4px 13px rgba(0, 0, 0, 0.25);
   display: flex;
   padding: 37px;
   flex-direction: row;
@@ -235,7 +266,7 @@ span {
 }
 
 .login-image img {
-  width: 350px;
+  width: 324px;
 }
 .login-content {
   max-width: 100%;
@@ -249,6 +280,10 @@ span {
 
 ul {
   list-style: none;
+}
+
+.flex-dd {
+  flex-direction: column !important;
 }
 
 .app-content {
@@ -332,6 +367,7 @@ ul {
 
 .login-inputs {
   direction: ltr;
+  margin-top: 25px;
 }
 
 .sign-up {
@@ -359,7 +395,9 @@ input:focus-visible {
   color: #000;
   margin-bottom: 32px;
 }
-
+.react-tabs__tab-panel--selected {
+  width: 100%;
+}
 .password {
   border-radius: 12px;
   background: #d9d9d9;
@@ -389,10 +427,39 @@ input:focus-visible {
 .mobile-prev {
   display: none;
 }
+
+@media screen and (max-width: 1025px) {
+  .avatar-tab img {
+    width: 100px;
+  }
+  .package-title {
+    font-size: 18px;
+  }
+  .sub-title {
+    font-size: 18px;
+  }
+}
 @media screen and (max-width: 500px) {
   .container-of-package {
     display: flex;
     flex-direction: column-reverse;
+  }
+  .row {
+    flex-direction: column;
+    align-items: flex-end;
+  }
+  .text-area {
+    align-items: flex-start;
+    width: 100%;
+  }
+  .sub-title-last {
+    text-align: center;
+  }
+  .row img {
+    width: 50%;
+  }
+  textarea {
+    width: 98%;
   }
   .avatar-tab img {
     width: 53px;

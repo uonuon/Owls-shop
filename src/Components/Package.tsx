@@ -365,9 +365,7 @@ export default function Package() {
             <button
               className="package-button"
               style={{ marginTop: 20 }}
-              onClick={(index) =>
-                setTabIndex((prev) => (prev < 4 ? prev + 1 : prev))
-              }
+              onClick={(index) => navigate("/love")}
             >
               إللي بعدُه
             </button>
@@ -420,7 +418,11 @@ export default function Package() {
             </Tab>
             {tabIndex === 4 && <Tab>الإشتراك</Tab>}
           </TabList>
-          <div className="container-of-package">
+          <div
+            className={`container-of-package ${
+              isMobile && tabIndex === 3 && "flex-dd"
+            }`}
+          >
             <div
               className="package-content"
               style={{ borderLeft: tabIndex > 3 ? "none" : "" }}
@@ -524,14 +526,6 @@ export default function Package() {
               </div>
             )}
           </div>
-          <button
-            className="package-button mobile-prev"
-            onClick={(index) =>
-              setTabIndex((prev) => (prev < 4 ? prev + 1 : prev))
-            }
-          >
-            إللي بعدُه
-          </button>
         </Tabs>
       </div>
     </div>

@@ -4,6 +4,7 @@ import Login from "./Components/Login";
 import OwlsWelcome from "./Components/OwlsWelcome";
 import "react-toastify/dist/ReactToastify.css";
 import Package from "./Components/Package";
+import LastPage from "./Components/Lastpage";
 
 export default function App() {
   return (
@@ -15,6 +16,7 @@ export default function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/welcome" element={<OwlsWelcome />} />
             <Route path="/package" element={<Package />} />
+            <Route path="/love" element={<LastPage />} />
           </Routes>
         </div>
       </Router>
