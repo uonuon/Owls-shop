@@ -29,8 +29,9 @@ export default function LastPage() {
               <button className="login-button">ابعت</button>
             </div>
             <img
-              onClick={() => navigate("/package")}
+              onClick={() => navigate("/package", { state: 3 })}
               alt="test"
+              className="owls"
               src={require("./../assets/1.png")}
             />
           </div>

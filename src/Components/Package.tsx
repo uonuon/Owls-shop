@@ -66,6 +66,7 @@ import profile3 from "../assets/profile/profile-4.png";
 import profile4 from "../assets/profile/profile-5.png";
 import { useNavigate } from "react-router-dom";
 import { User, UserType } from "../Context/User";
+import { useLocation } from "react-router-dom";
 
 export default function Package() {
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
@@ -119,11 +120,15 @@ export default function Package() {
   const hootsP = [hoot5, hoot1, hoot2, hoot3, hoot4];
   const bgs = [bg0, bg1];
   const bgsP = [bg2, bg3, bg4];
-  const [tabIndex, setTabIndex] = useState(0);
   const [currentSelected, setCurrentSelected] = useState<
     "AVATAR" | "HOOTS" | "PROFILE"
   >("AVATAR");
   const { docId } = useContext(User) as UserType;
+
+  const location = useLocation();
+  const [tabIndex, setTabIndex] = useState(location.state as number);
+
+  // get userId
 
   let navigate = useNavigate();
   useEffect(() => {
@@ -311,40 +316,29 @@ export default function Package() {
             </p>
           </div>
         </TabPanel>
-        <TabPanel className={"bg-tab tab"}>
+        <TabPanel className={"subscribe-tab tab"}>
           <div className="tab-container-subscribe">
             <div
               style={{
                 display: "flex",
-                flexDirection: "row",
+                flexDirection: isMobile ? "column" : "row",
                 marginBottom: "4%",
+                width: "100%",
               }}
             >
               <div className="container-subscribe-image">
-                <img
-                  style={{ width: 177 }}
-                  alt=""
-                  src={require("../assets/vodafone.png")}
-                />
+                <img alt="" src={require("../assets/vodafone.png")} />
                 <p className="package-title">+20 103 344 7281</p>
               </div>
               <div className="container-subscribe-image">
-                <img
-                  style={{ width: 177 }}
-                  alt=""
-                  src={require("../assets/instapay.png")}
-                />
+                <img alt="" src={require("../assets/instapay.png")} />
                 <p className="package-title">philemono@instapay</p>
               </div>
               <div
                 className="container-subscribe-image"
                 style={{ borderLeft: "none" }}
               >
-                <img
-                  style={{ width: 177 }}
-                  alt=""
-                  src={require("../assets/orange.png")}
-                />
+                <img alt="" src={require("../assets/orange.png")} />
                 <p className="package-title">+20 120 652 0687</p>
               </div>
             </div>
@@ -516,16 +510,37 @@ export default function Package() {
                       setTabIndex((prev) => (prev < 4 ? prev + 1 : prev))
                     }
                     alt=""
-                    style={{ width: 283, cursor: "pointer" }}
+                    style={{
+                      width: isMobile ? 163 : 177,
+                      height: isMobile ? 231 : 406,
+                      cursor: "pointer",
+                    }}
                     src={require("../assets/subscribe.png")}
                   />
                 )}
                 {tabIndex === 3 && (
-                  <p className="bottom-title">أو كمّل من هنا</p>
+                  <p
+                    onClick={() => {
+                      navigate("/love");
+                    }}
+                    className="bottom-title"
+                  >
+                    أو كمّل من هنا
+                  </p>
                 )}
               </div>
             )}
           </div>
+          {tabIndex < 3 && (
+            <button
+              className="package-button mobile-prev"
+              onClick={(index) =>
+                setTabIndex((prev) => (prev < 4 ? prev + 1 : prev))
+              }
+            >
+              إللي بعدُه
+            </button>
+          )}
         </Tabs>
       </div>
     </div>

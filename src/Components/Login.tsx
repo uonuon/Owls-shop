@@ -61,8 +61,8 @@ export default function Login() {
         <div className="login-content">
           <p className="title">سجّل وكمّل</p>
           <p className="sub-title">
-            محتاج تعمل أكونت جديد عشان تقدر ترجع تستخدم أولز تاني وتجرّب أخر
-            إضافات أولز والبروفايل الجديد!{" "}
+            سجل دخولك أو إعمل أكونت جديد من هنا عشان تقدر تشوف البروفايل بتاعك
+            الجديد من على الآبب في موبايلك{" "}
           </p>
           <div className="login-inputs">
             <input

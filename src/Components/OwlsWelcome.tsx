@@ -12,9 +12,10 @@ export default function OwlsWelcome() {
       <div className="app-container">
         <div className="app-content">
           <p className="title">أهلاً بيك في أولز من تاني!</p>
+          <p className="sub-title">-“هو أولز راجع؟” .. </p>
           <p className="sub-title">
-            هو أولز راجع؟ .. أيوة! أولز آبب هيرجع يشتغل تاني زي زمان، وزودنا
-            حاجات جديدة كمان..
+            -أيوة! أولز آبب هيرجع يفتح تاني، وهنضيف شوية حاجات جديدة الفترة اللي
+            جاية..{" "}
           </p>
           <p className="sub-list">
             <span>• الافاتارز:</span>
@@ -41,22 +42,22 @@ export default function OwlsWelcome() {
           </div>
           <div className="images-container">
             <img
-              onClick={() => navigate("/package")}
+              onClick={() => navigate("/package", { state: 0 })}
               alt="test"
               src={require("./../assets/3.png")}
             />
             <img
-              onClick={() => navigate("/package")}
+              onClick={() => navigate("/package", { state: 1 })}
               alt="test"
               src={require("./../assets/4.png")}
             />
             <img
-              onClick={() => navigate("/package")}
+              onClick={() => navigate("/package", { state: 2 })}
               alt="test"
               src={require("./../assets/2.png")}
             />
             <img
-              onClick={() => navigate("/package")}
+              onClick={() => navigate("/package", { state: 3 })}
               alt="test"
               src={require("./../assets/1.png")}
             />
