@@ -67,6 +67,8 @@ import profile4 from "../assets/profile/profile-5.png";
 import { useNavigate } from "react-router-dom";
 import { User, UserType } from "../Context/User";
 import { useLocation } from "react-router-dom";
+import { ref, update } from "firebase/database";
+import { db } from "../FirebaseConfig";
 
 export default function Package() {
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
@@ -126,7 +128,9 @@ export default function Package() {
   const { docId } = useContext(User) as UserType;
 
   const location = useLocation();
-  const [tabIndex, setTabIndex] = useState(location.state as number);
+  const [tabIndex, setTabIndex] = useState(
+    location.state ? (location.state as number) : 0
+  );
 
   // get userId
 
@@ -161,6 +165,21 @@ export default function Package() {
     setSelectedImageIndex(index);
     setSelectedImageIndexP(100);
     setCurrentSelected(str);
+    const refr = ref(db, `${`selection/${docId}/`}`);
+    switch (str) {
+      case "AVATAR":
+        update(refr, { avatar: index });
+        break;
+      case "HOOTS":
+        update(refr, { hoot: index });
+        break;
+      case "PROFILE":
+        update(refr, { profile: index });
+        break;
+
+      default:
+        break;
+    }
   };
   const handleImageClickP = (
     index: number,
@@ -169,6 +188,21 @@ export default function Package() {
     setSelectedImageIndexP(index);
     setSelectedImageIndex(100);
     setCurrentSelected(str);
+    const refr = ref(db, `${`selection/${docId}/`}`);
+    switch (str) {
+      case "AVATAR":
+        update(refr, { avatar: index + "PREMIUM" });
+        break;
+      case "HOOTS":
+        update(refr, { hoot: index + "PREMIUM" });
+        break;
+      case "PROFILE":
+        update(refr, { profile: index + "PREMIUM" });
+        break;
+
+      default:
+        break;
+    }
   };
   const TabsPanel = useCallback(() => {
     return (
@@ -323,6 +357,7 @@ export default function Package() {
                 display: "flex",
                 flexDirection: isMobile ? "column" : "row",
                 marginBottom: "4%",
+                justifyContent: "center",
                 width: "100%",
               }}
             >
@@ -511,7 +546,7 @@ export default function Package() {
                     }
                     alt=""
                     style={{
-                      width: isMobile ? 163 : 177,
+                      width: isMobile ? 163 : 283,
                       height: isMobile ? 231 : 406,
                       cursor: "pointer",
                     }}

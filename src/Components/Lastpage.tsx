@@ -2,9 +2,35 @@
 import { ToastContainer } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import arrow from "../assets/arrow-down.svg";
+import { ref, push } from "firebase/database";
+import { db } from "../FirebaseConfig";
+import { useState, useContext, ChangeEvent } from "react";
+import { User, UserType } from "../Context/User";
 
 export default function LastPage() {
   let navigate = useNavigate();
+  const [text, setText] = useState("");
+  const { docId, user } = useContext(User) as UserType;
+
+  const handleChange = (e: any): void => {
+    setText(e.target.value);
+  };
+
+  const sendMessage = () => {
+    const messagesListRef = ref(db, "messages/" + docId);
+    push(messagesListRef, {
+      createdAt: Date.now(),
+      uid: docId,
+      user: user.email,
+      content: text,
+    })
+      .then(() => {
+        setText("");
+      })
+      .catch(() => {
+        setText("");
+      });
+  };
 
   return (
     <div className="screen">
@@ -25,8 +51,10 @@ export default function LastPage() {
           <p className="package-title">أكتب رسالتك هنا..</p>
           <div className="row">
             <div className="text-area">
-              <textarea></textarea>
-              <button className="login-button">ابعت</button>
+              <textarea onInput={handleChange} value={text}></textarea>
+              <button onClick={sendMessage} className="login-button">
+                ابعت
+              </button>
             </div>
             <img
               onClick={() => navigate("/package", { state: 3 })}
