@@ -640,24 +640,26 @@ input:focus-visible {
   }
 }
 
-@media screen and (max-height: 800px) {
-  .title {
-    font-size: 50px;
-  }
-  .sub-list {
-    font-size: 18px;
-  }
-  .images-container img {
-    width: 215px;
-  }
-  .login-container {
-    padding: 30px;
-  }
-  .mobile-mockup {
-    width: 200px;
-    height: auto;
-  }
-  .package-button {
-    width: 200px;
+@media screen and (max-height: 850px) {
+  @media screen and (min-width: 700px) {
+    .title {
+      font-size: 50px;
+    }
+    .sub-list {
+      font-size: 18px;
+    }
+    .images-container img {
+      width: 215px;
+    }
+    .login-container {
+      padding: 30px;
+    }
+    .mobile-mockup {
+      width: 200px;
+      height: auto;
+    }
+    .package-button {
+      width: 200px;
+    }
   }
 }
