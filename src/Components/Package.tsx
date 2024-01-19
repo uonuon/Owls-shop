@@ -68,7 +68,8 @@ import { useNavigate } from "react-router-dom";
 import { User, UserType } from "../Context/User";
 import { useLocation } from "react-router-dom";
 import { ref, update } from "firebase/database";
-import { db } from "../FirebaseConfig";
+import { analytics, db } from "../FirebaseConfig";
+import { logEvent } from "firebase/analytics";
 
 export default function Package() {
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
@@ -408,14 +409,23 @@ export default function Package() {
     switch (tabIndex) {
       case 0:
         setCurrentSelected("AVATAR");
+        logEvent(analytics, "AVATAR");
         break;
       case 1:
         setCurrentSelected("HOOTS");
+        logEvent(analytics, "HOOTS");
+
         break;
       case 2:
         setCurrentSelected("PROFILE");
+        logEvent(analytics, "PROFILE");
         break;
-
+      case 3:
+        logEvent(analytics, "PREMIUM");
+        break;
+      case 4:
+        logEvent(analytics, "SUBSCRIBE");
+        break;
       default:
         break;
     }

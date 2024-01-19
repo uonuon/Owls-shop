@@ -114,6 +114,7 @@ textarea {
   margin-bottom: 15px;
   border-radius: 8px;
   color: white;
+  resize: none;
 }
 
 .owls {
