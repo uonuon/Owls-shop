@@ -640,7 +640,7 @@ input:focus-visible {
   }
 }
 
-@media screen and (max-height: 850px) {
+@media screen and (max-height: 800px) {
   .title {
     font-size: 50px;
   }
