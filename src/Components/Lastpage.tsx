@@ -52,7 +52,11 @@ export default function LastPage() {
           <div className="row">
             <div className="text-area">
               <textarea onInput={handleChange} value={text}></textarea>
-              <button onClick={sendMessage} className="login-button">
+              <button
+                disabled={text.length === 0}
+                onClick={sendMessage}
+                className="login-button"
+              >
                 ابعت
               </button>
             </div>
